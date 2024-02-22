@@ -19,20 +19,20 @@ spec:
           type: tls
       - authentication:
           type: tls
-       name: external
-       port: 9094
-       type: ingress
-       tls: true
-       configuration:
+        name: external
+        port: 9094
+        type: ingress
+        tls: true
+        configuration:
          bootstrap:
            host: kafka-bootstrap.dev.plf.chargerapps.charger.com
-        brokers:
-        - broker: 0
-          host: kafka-0.dev.plf.chargerapps.charger.com
-        - broker: 1
-          host: kafka-1.dev.plf.chargerapps.charger.com
-        - broker: 2
-          host: kafka-2.dev.plf.chargerapps.charger.com
+         brokers:
+         - broker: 0
+           host: kafka-0.dev.plf.chargerapps.charger.com
+         - broker: 1
+           host: kafka-1.dev.plf.chargerapps.charger.com
+         - broker: 2
+           host: kafka-2.dev.plf.chargerapps.charger.com
     storage:
       type: jbod
       volumes:
@@ -52,6 +52,3 @@ spec:
       type: persistent-claim
       size: 20Gi
       deleteClaim: false
-  entityOperator:
-    topicOperator: {}
-    userOperator: {}
