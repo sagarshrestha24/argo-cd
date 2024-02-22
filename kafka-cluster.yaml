@@ -1,0 +1,57 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: strimzi-kafka-cluster
+  namespace: strimzi
+spec:
+  kafka:
+    replicas: 3
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+        authentication:
+          type: tls
+      - authentication:
+          type: tls
+       name: external
+       port: 9094
+       type: ingress
+       tls: true
+       configuration:
+         bootstrap:
+           host: kafka-bootstrap.dev.plf.chargerapps.charger.com
+        brokers:
+        - broker: 0
+          host: kafka-0.dev.plf.chargerapps.charger.com
+        - broker: 1
+          host: kafka-1.dev.plf.chargerapps.charger.com
+        - broker: 2
+          host: kafka-2.dev.plf.chargerapps.charger.com
+    storage:
+      type: jbod
+      volumes:
+      - id: 0
+        type: persistent-claim
+        size: 100Gi
+        deleteClaim: false
+    config:
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 2
+      transaction.state.log.min.isr: 3
+      default.replication.factor: 3
+      min.insync.replicas: 2
+  zookeeper:
+    replicas: 3
+    storage:
+      type: persistent-claim
+      size: 20Gi
+      deleteClaim: false
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
