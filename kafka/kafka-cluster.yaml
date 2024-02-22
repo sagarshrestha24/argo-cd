@@ -17,22 +17,10 @@ spec:
         tls: true
         authentication:
           type: tls
-      - authentication:
-          type: tls
-        name: external
+      - name: external
         port: 9094
-        type: ingress
-        tls: true
-        configuration:
-         bootstrap:
-           host: kafka-bootstrap.dev.plf.chargerapps.charger.com
-         brokers:
-         - broker: 0
-           host: kafka-0.dev.plf.chargerapps.charger.com
-         - broker: 1
-           host: kafka-1.dev.plf.chargerapps.charger.com
-         - broker: 2
-           host: kafka-2.dev.plf.chargerapps.charger.com
+        type: nodeport
+        tls: false
     storage:
       type: jbod
       volumes:
@@ -46,10 +34,12 @@ spec:
       transaction.state.log.min.isr: 3
       default.replication.factor: 3
       min.insync.replicas: 2
-      zookeeper.connection.timeout.ms: 60000
   zookeeper:
     replicas: 3
     storage:
       type: persistent-claim
       size: 20Gi
       deleteClaim: false
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
