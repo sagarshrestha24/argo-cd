@@ -46,6 +46,7 @@ spec:
       transaction.state.log.min.isr: 3
       default.replication.factor: 3
       min.insync.replicas: 2
+      zookeeper.connection.timeout.ms: 60000
   zookeeper:
     replicas: 3
     storage:
