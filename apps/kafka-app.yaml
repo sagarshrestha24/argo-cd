@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/sagarshrestha24/argo-cd.git
     targetRevision: HEAD
-    path: kafKA
+    path: kafka
   destination:
     name: in-cluster
     namespace: strimzi
