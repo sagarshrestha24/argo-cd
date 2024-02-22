@@ -26,7 +26,8 @@ spec:
       volumes:
       - id: 0
         type: persistent-claim
-        size: 100Gi
+        size: 20Gi
+        storageClass: standard
         deleteClaim: true
     config:
       offsets.topic.replication.factor: 2
@@ -39,6 +40,7 @@ spec:
     storage:
       type: persistent-claim
       size: 20Gi
+      storageClass: standard
       deleteClaim: true
   entityOperator:
     topicOperator: {}
