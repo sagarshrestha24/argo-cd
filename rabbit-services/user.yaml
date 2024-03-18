@@ -1,0 +1,11 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: User
+metadata:
+  name: sagar-user
+  namespace: rabbitmq
+spec:
+  tags:
+  - policymaker
+  rabbitmqClusterReference:
+    name: rabbitmqcluster-sample
+
