@@ -5,7 +5,7 @@ metadata:
   namespace: rabbitmq
 spec:
   vhost: "/"
-  user: "sagar-user" # name of the RabbitMQ user
+  user: "naEGsDNA5mD6XTz_bMkAPXEruHEDjHM4" # name of the RabbitMQ user
   permissions:
     write: ".*"
     configure: ".*"
