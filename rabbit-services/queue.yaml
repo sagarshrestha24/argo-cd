@@ -7,7 +7,7 @@ type: Opaque
 stringData:
   username: kobe # has to be an existing user
   password: kobe1234
-  uri: https://rabbitmqcluster-sample:15672 # uri for the management api; when scheme is not provided in uri, operator defaults to 'http'
+  uri: http://rabbitmqcluster-sample:15672 # uri for the management api; when scheme is not provided in uri, operator defaults to 'http'
 ---
 apiVersion: rabbitmq.com/v1beta1
 kind: Queue
