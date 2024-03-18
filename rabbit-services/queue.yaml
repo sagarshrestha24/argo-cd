@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kobe-rabbit-creds
+type: Opaque
+stringData:
+  username: kobe # has to be an existing user
+  password: kobe1234
+  uri: https://rabbitmqcluster-sample:15672 # uri for the management api; when scheme is not provided in uri, operator defaults to 'http'
+---
+apiVersion: rabbitmq.com/v1beta1
+kind: Queue
+metadata:
+  name: kobe-queue
+spec:
+  name: test-queue
+  rabbitmqClusterReference:
+    connectionSecret:
+      name: kobe-rabbit-creds # has to an existing secret in the same namespace as this Queue object
